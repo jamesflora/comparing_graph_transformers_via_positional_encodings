@@ -24,6 +24,9 @@ def set_cfg_gt(cfg):
     cfg.posenc_RPE.powers_of_laplacian = 0
     cfg.posenc_RPE.powers_of_adjacency = 0  
     cfg.posenc_RPE.num_rpes = 0 
+    #Types of edge attributes
+    cfg.posenc_edge = CN()
+    cfg.posenc_edge.resistance_distance = False
     # Learnable distances
     ldd = cfg.posenc_RPE.learnable_diffusion_distance = CN()
     ldd.enable = False
