@@ -282,6 +282,21 @@ def add_powers_of_adjacency_to_data(
     data = add_matrix_to_data(data, powers_of_adjacency)
     return data
 
+def add_resistance_edges_to_data(
+    data : Data,
+     inf_distance : float,
+     device : str
+ ) -> Data:
+    laplacian = get_dense_laplacian_matrix(data).to(device)
+    pinv = torch.linalg.pinv(laplacian, hermitian=True)
+    pinv_diagonal = torch.diagonal(pinv)
+    resistance_matrix = pinv_diagonal.unsqueeze(0) + pinv_diagonal.unsqueeze(1) - 2 * pinv
+    resistance_matrix = set_intercomponent_distance_to_inf(data, resistance_matrix, inf_distance)
+    row, col = data.edge_index
+    effective_resistance = resistance_matrix[row, col]
+
+    data.edge_attr = effective_resistance.unsqueeze(1)
+    return data
 
 def add_rpe_to_data(
     data : Data, 
@@ -352,5 +367,19 @@ def add_rpe_to_data(
         )
     # add the complete graph index to the data so we can reconstruct the RPE matrix later
     data.complete_graph_index = get_complete_graph_index(data.num_nodes)
+
+    return data
+
+def add_edge_feature_to_data(
+    data : Data, 
+    cfg 
+) -> Data:
+    """ Add edge_features specified by `cfg` to the data """    
+    if cfg.posenc_edge.resistance_distance:
+        data = add_resistance_edges_to_data(
+            data, 
+            cfg.posenc_RPE.inf_distance,
+            device=cfg.accelerator
+        )
 
     return data

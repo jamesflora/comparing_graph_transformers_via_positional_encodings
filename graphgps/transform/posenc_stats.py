@@ -8,7 +8,7 @@ from torch_geometric.utils import (get_laplacian, to_scipy_sparse_matrix,
                                    to_undirected, to_dense_adj, scatter)
 from torch_geometric.utils.num_nodes import maybe_num_nodes
 from graphgps.encoder.graphormer_encoder import graphormer_pre_processing
-from graphgps.transform.rpe import add_degree_encoding, add_rpe_to_data
+from graphgps.transform.rpe import add_degree_encoding, add_rpe_to_data, add_edge_feature_to_data
 
 
 def compute_posenc_stats(data, pe_types, is_undirected, cfg):
@@ -35,7 +35,7 @@ def compute_posenc_stats(data, pe_types, is_undirected, cfg):
     # Verify PE types.
     for t in pe_types:
         if t not in ['LapPE', 'EquivStableLapPE', 'SignNet', 'RWSE', 'HKdiagSE',
-                     'HKfullPE', 'ElstaticSE', 'GraphormerBias', 'RPE']:
+                     'HKfullPE', 'ElstaticSE', 'GraphormerBias', 'RPE', 'edge']:
             raise ValueError(f"Unexpected PE stats selection {t} in {pe_types}")
 
     # Basic preprocessing of the input graph.
@@ -146,7 +146,10 @@ def compute_posenc_stats(data, pe_types, is_undirected, cfg):
     if 'RPE' in pe_types:
         data = add_degree_encoding(data)
         data = add_rpe_to_data(data, cfg) 
-        
+    
+    if 'edge' in pe_types:
+        data = add_edge_feature_to_data(data, cfg)
+
     return data
 
 
