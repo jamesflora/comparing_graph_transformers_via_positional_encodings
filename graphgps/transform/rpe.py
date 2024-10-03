@@ -1,5 +1,6 @@
 import networkx as nx
 import torch
+import logging
 from torch_geometric.data import Data
 from torch_geometric.graphgym.config import cfg
 from torch_geometric.utils import to_dense_adj, to_dense_batch, to_networkx, get_laplacian
@@ -189,6 +190,23 @@ def add_resistance_to_data(
     data = add_matrix_to_data(data, resistance_matrix.cpu())
     return data
 
+def add_biharmonic_to_data(
+     data : Data,
+     inf_distance : float,
+     device : str
+ ) -> Data:
+    laplacian = get_dense_laplacian_matrix(data).to(device)
+    pinv = torch.linalg.pinv(laplacian, hermitian=True)
+    #eigval, eigvec = torch.linalg.eigh(pinv)
+    #sqrt_eigval = torch.sqrt(torch.clamp(eigval, min=0.0))
+    #pinvsq = eigvec @ torch.diag(sqrt_eigval) @ eigvec.T
+    pinvsq = torch.linalg.matrix_power(pinv, 2)
+    pinv_diagonal = torch.diagonal(pinvsq)
+    resistance_matrix = pinv_diagonal.unsqueeze(0) + pinv_diagonal.unsqueeze(1) - 2*pinvsq
+    resistance_matrix = set_intercomponent_distance_to_inf(data, resistance_matrix, inf_distance)
+    data = add_matrix_to_data(data, resistance_matrix.cpu())
+    return data
+
 def add_diffusion_to_data(
     data : Data,
     t : float,
@@ -304,11 +322,21 @@ def add_rpe_to_data(
 ) -> Data:
     """ Add RPEs specified by `cfg` to the data """    
     if cfg.posenc_RPE.resistance_distance:
+        logging.info(f"  resistance distance enabled")
         data = add_resistance_to_data(
             data, 
             cfg.posenc_RPE.inf_distance,
             device=cfg.accelerator
         )
+
+    if cfg.posenc_RPE.biharmonic:
+        logging.info(f"  biharmonic distance enabled")
+        data = add_biharmonic_to_data(
+            data, 
+            cfg.posenc_RPE.inf_distance,
+            device=cfg.accelerator
+        )
+        
     if cfg.posenc_RPE.adjacency:
         data = add_adjacency_to_data(
             data
