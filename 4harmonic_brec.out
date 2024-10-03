@@ -1,0 +1,37 @@
+wandb: Currently logged in as: floraj (floraj-oregon-state-university). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.18.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /nfs/hpc/share/floraj/biharmonic/comparing_graph_transformers_via_positional_encodings/wandb/run-20241002_184735-kn2jczuq
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run resistance
+wandb: ⭐️ View project at https://wandb.ai/floraj-oregon-state-university/BREC
+wandb: 🚀 View run at https://wandb.ai/floraj-oregon-state-university/BREC/runs/kn2jczuq
+WARNING:root:Key gnn.dim_in with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key wandb.sweep.id with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key rpe_transformer.distance_encoder_hidden_dim with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key deepsets_ape_encoder.ape_type with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key posenc_GraphormerBias.num_spatial_types with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key posenc_GraphormerBias.num_in_degrees with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key posenc_GraphormerBias.num_out_degrees with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+[*] Run ID 0: seed=0, split_index=0
+    Starting now: 2024-10-02 18:47:39.942024
+[*] Loaded dataset 'BREC' from 'Custom':
+/nfs/hpc/share/floraj/graphgps/lib/python3.11/site-packages/torch_geometric/data/in_memory_dataset.py:157: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  Data(edge_index=[2, 14688256], x=[1779456, 1], num_nodes=1779456)
+  undirected: True
+  num graphs: 51200
+/nfs/hpc/share/floraj/graphgps/lib/python3.11/site-packages/torch_geometric/data/in_memory_dataset.py:157: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  avg num_nodes/graph: 34
+  num node features: 1
+  num edge features: 0
+Precomputing Positional Encoding statistics: ['RPE'] for all graphs...
+  ...estimated to be undirected: True
+  0%|          | 0/51200 [00:00<?, ?it/s]/nfs/hpc/share/floraj/graphgps/lib/python3.11/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /home/conda/feedstock_root/build_artifacts/pytorch-recipe_1675740270589/work/aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+ 15%|█▌        | 7855/51200 [00:10<00:55, 784.91it/s] 15%|█▌        | 7855/51200 [00:25<00:55, 784.91it/s] 18%|█▊        | 9101/51200 [00:25<02:22, 294.45it/s] 19%|█▉        | 9773/51200 [00:35<03:20, 207.07it/s] 27%|██▋       | 13653/51200 [00:45<02:18, 271.16it/s] 34%|███▎      | 17240/51200 [00:55<01:53, 300.50it/s] 35%|███▌      | 18132/51200 [01:05<02:22, 231.96it/s] 37%|███▋      | 18916/51200 [01:15<02:56, 183.34it/s] 39%|███▊      | 19785/51200 [01:25<03:25, 153.23it/s] 40%|████      | 20557/51200 [01:35<03:56, 129.81it/s] 41%|████▏     | 21159/51200 [01:45<04:36, 108.49it/s] 42%|████▏     | 21732/51200 [01:55<05:17, 92.94it/s]  43%|████▎     | 22104/51200 [02:05<06:22, 76.07it/s] 44%|████▍     | 22546/51200 [02:15<07:11, 66.43it/s] 45%|████▍     | 22952/51200 [02:25<08:01, 58.65it/s] 45%|████▌     | 23257/51200 [02:36<09:17, 50.16it/s] 46%|████▌     | 23527/51200 [02:46<10:41, 43.17it/s] 47%|████▋     | 23831/51200 [02:56<11:36, 39.31it/s] 47%|████▋     | 24099/51200 [03:06<12:42, 35.55it/s] 48%|████▊     | 24465/51200 [03:16<12:25, 35.86it/s] 49%|████▉     | 25256/51200 [03:26<08:51, 48.82it/s] 62%|██████▏   | 31668/51200 [03:36<01:26, 226.49it/s] 66%|██████▋   | 33923/51200 [03:46<01:16, 226.18it/s] 68%|██████▊   | 34777/51200 [03:56<01:29, 183.92it/s] 69%|██████▉   | 35458/51200 [04:06<01:45, 149.16it/s] 79%|███████▊  | 40235/51200 [04:16<00:44, 247.69it/s] 84%|████████▍ | 42997/51200 [04:26<00:32, 256.18it/s] 86%|████████▌ | 43880/51200 [04:36<00:35, 205.71it/s] 87%|████████▋ | 44747/51200 [04:46<00:37, 169.99it/s] 89%|████████▉ | 45612/51200 [04:56<00:38, 144.91it/s] 91%|█████████ | 46407/51200 [05:06<00:38, 125.27it/s] 92%|█████████▏| 47004/51200 [05:16<00:39, 105.57it/s] 93%|█████████▎| 47499/51200 [05:26<00:41, 88.72it/s]  93%|█████████▎| 47856/51200 [05:36<00:45, 72.81it/s] 94%|█████████▍| 48241/51200 [05:46<00:47, 62.49it/s] 95%|█████████▌| 48658/51200 [05:56<00:45, 56.22it/s] 96%|█████████▌| 48928/51200 [06:06<00:47, 47.45it/s] 96%|█████████▌| 49189/51200 [06:16<00:49, 41.02it/s] 97%|█████████▋| 49453/51200 [06:26<00:47, 36.64it/s] 97%|█████████▋| 49717/51200 [06:36<00:44, 33.56it/s] 98%|█████████▊| 50062/51200 [06:46<00:33, 33.84it/s] 99%|█████████▉| 50781/51200 [06:56<00:09, 45.24it/s]100%|██████████| 51200/51200 [07:01<00:00, 121.37it/s]
+Done! Took 00:07:08.80
+/var/spool/slurmd/job17868739/slurm_script: line 13: 1349966 Killed                  python main.py --cfg configs/BREC/brec-rpe-transformer-rd.yaml wandb.use True
+slurmstepd: error: Detected 1 oom_kill event in StepId=17868739.batch. Some of the step tasks have been OOM Killed.

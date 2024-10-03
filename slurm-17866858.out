@@ -1,0 +1,61 @@
+wandb: Currently logged in as: floraj (floraj-oregon-state-university). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.18.2 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /nfs/hpc/share/floraj/biharmonic/comparing_graph_transformers_via_positional_encodings/wandb/run-20241001_060337-yqrl4i91
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run resistance
+wandb: ⭐️ View project at https://wandb.ai/floraj-oregon-state-university/BREC
+wandb: 🚀 View run at https://wandb.ai/floraj-oregon-state-university/BREC/runs/yqrl4i91
+WARNING:root:Key gnn.dim_in with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key wandb.sweep.id with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key rpe_transformer.distance_encoder_hidden_dim with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key posenc_RPE.num_in_degrees with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key posenc_RPE.num_out_degrees with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key deepsets_ape_encoder.ape_type with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key posenc_GraphormerBias.num_spatial_types with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key posenc_GraphormerBias.num_in_degrees with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+WARNING:root:Key posenc_GraphormerBias.num_out_degrees with value <class 'NoneType'> is not a valid type; valid types: {<class 'tuple'>, <class 'float'>, <class 'list'>, <class 'bool'>, <class 'int'>, <class 'str'>}
+[*] Run ID 0: seed=0, split_index=0
+    Starting now: 2024-10-01 06:03:42.520276
+[*] Loaded dataset 'BREC' from 'Custom':
+/nfs/hpc/share/floraj/graphgps/lib/python3.11/site-packages/torch_geometric/data/in_memory_dataset.py:157: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  Data(edge_index=[2, 14688256], x=[1779456, 1], num_nodes=1779456)
+  undirected: True
+  num graphs: 51200
+/nfs/hpc/share/floraj/graphgps/lib/python3.11/site-packages/torch_geometric/data/in_memory_dataset.py:157: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+  avg num_nodes/graph: 34
+  num node features: 1
+  num edge features: 0
+Precomputing Positional Encoding statistics: ['edge'] for all graphs...
+  ...estimated to be undirected: True
+  0%|          | 0/51200 [00:00<?, ?it/s] 16%|█▌        | 8206/51200 [00:10<00:52, 820.38it/s] 16%|█▌        | 8206/51200 [00:25<00:52, 820.38it/s] 20%|█▉        | 10028/51200 [00:25<02:04, 330.27it/s] 33%|███▎      | 17073/51200 [00:35<01:12, 473.90it/s] 36%|███▌      | 18258/51200 [00:45<01:34, 347.90it/s] 38%|███▊      | 19416/51200 [00:55<01:57, 269.89it/s] 40%|████      | 20563/51200 [01:05<02:19, 219.53it/s] 42%|████▏     | 21433/51200 [01:16<02:49, 175.25it/s] 43%|████▎     | 22123/51200 [01:26<03:24, 142.35it/s] 44%|████▍     | 22726/51200 [01:36<04:02, 117.24it/s] 46%|████▌     | 23396/51200 [01:46<04:32, 101.92it/s] 47%|████▋     | 24044/51200 [01:56<04:59, 90.66it/s]  49%|████▉     | 25059/51200 [02:06<04:38, 93.92it/s] 65%|██████▌   | 33285/51200 [02:16<00:57, 313.40it/s] 68%|██████▊   | 34864/51200 [02:26<01:01, 266.60it/s] 76%|███████▌  | 38669/51200 [02:36<00:41, 300.83it/s] 84%|████████▍ | 43258/51200 [02:46<00:22, 348.31it/s] 87%|████████▋ | 44684/51200 [02:56<00:22, 286.51it/s] 90%|████████▉ | 45870/51200 [03:06<00:22, 236.07it/s] 92%|█████████▏| 46893/51200 [03:16<00:21, 195.91it/s] 93%|█████████▎| 47730/51200 [03:26<00:21, 162.22it/s] 94%|█████████▍| 48382/51200 [03:36<00:21, 133.09it/s] 96%|█████████▌| 49038/51200 [03:46<00:19, 112.84it/s] 97%|█████████▋| 49680/51200 [03:56<00:15, 98.24it/s]  99%|█████████▉| 50772/51200 [04:06<00:04, 101.52it/s]100%|██████████| 51200/51200 [04:10<00:00, 204.52it/s]
+Done! Took 00:04:11.59
+Traceback (most recent call last):
+  File "/nfs/hpc/share/floraj/biharmonic/comparing_graph_transformers_via_positional_encodings/main.py", line 240, in <module>
+    main(cfg)
+  File "/nfs/hpc/share/floraj/biharmonic/comparing_graph_transformers_via_positional_encodings/main.py", line 219, in main
+    execute_training_runs(cfg, args)
+  File "/nfs/hpc/share/floraj/biharmonic/comparing_graph_transformers_via_positional_encodings/main.py", line 179, in execute_training_runs
+    execute_single_training_run(cfg, args, run_id, seed, split_index)
+  File "/nfs/hpc/share/floraj/biharmonic/comparing_graph_transformers_via_positional_encodings/main.py", line 174, in execute_single_training_run
+    train_dict[cfg.train.mode](loggers, loaders, model, optimizer,
+  File "/nfs/hpc/share/floraj/biharmonic/comparing_graph_transformers_via_positional_encodings/graphgps/train/brec_train.py", line 130, in brec_train
+    model = create_model(dim_in=cfg.gnn.dim_in, dim_out=OUTPUT_DIM) # TODO: revisit this, update other create_model
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/floraj/graphgps/lib/python3.11/site-packages/torch_geometric/graphgym/model_builder.py", line 80, in create_model
+    model = GraphGymModule(dim_in, dim_out, cfg)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/floraj/graphgps/lib/python3.11/site-packages/torch_geometric/graphgym/model_builder.py", line 20, in __init__
+    self.model = network_dict[cfg.model.type](dim_in=dim_in,
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/floraj/biharmonic/comparing_graph_transformers_via_positional_encodings/graphgps/network/custom_gnn.py", line 29, in __init__
+    assert cfg.gnn.dim_inner == dim_in, \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: The inner and hidden dims must match.
+wandb: - 0.011 MB of 0.011 MB uploadedwandb: \ 0.011 MB of 0.011 MB uploadedwandb: | 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: / 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: - 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: \ 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: | 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: / 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: - 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: \ 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: | 0.063 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: / 0.087 MB of 0.087 MB uploaded (0.004 MB deduped)wandb: 🚀 View run resistance at: https://wandb.ai/floraj-oregon-state-university/BREC/runs/yqrl4i91
+wandb: ⭐️ View project at: https://wandb.ai/floraj-oregon-state-university/BREC
+wandb: Synced 6 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20241001_060337-yqrl4i91/logs
