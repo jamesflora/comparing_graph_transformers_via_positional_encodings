@@ -3,8 +3,8 @@ metric_best: accuracy
 wandb:
   use: True
   project: BREC
-  entity: position-encoding
-  name: rd
+  entity: floraj-oregon-state-university
+  name: resistance
 dataset:
   split_mode: none # This currently does nothing for BREC
   format: Custom
